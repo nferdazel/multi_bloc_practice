@@ -15,6 +15,7 @@ class SecondPage extends StatelessWidget {
               style: TextStyle(fontSize: 40, fontWeight: FontWeight.bold),
             ),
             Row(
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 RaisedButton(
                   onPressed: () {},
