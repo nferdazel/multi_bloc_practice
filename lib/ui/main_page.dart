@@ -8,11 +8,18 @@ class MainPage extends StatelessWidget {
       backgroundColor: Colors.pink,
       body: Center(
         child: Column(
+          mainAxisSize: MainAxisSize.min,
           children: [
-            Text('0'),
+            Text(
+              '0',
+              style: TextStyle(fontSize: 40, fontWeight: FontWeight.bold),
+            ),
             RaisedButton(
               onPressed: () {},
-              child: Text('Click to Change'),
+              child: Text(
+                'Click to Change',
+                style: TextStyle(color: Colors.white),
+              ),
               color: Colors.pink,
               shape: StadiumBorder(),
             ),
