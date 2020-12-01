@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:multi_bloc/ui/draft_page.dart';
+import 'package:multi_bloc/ui/second_page.dart';
 
 class MainPage extends StatelessWidget {
   @override
@@ -15,7 +16,12 @@ class MainPage extends StatelessWidget {
               style: TextStyle(fontSize: 40, fontWeight: FontWeight.bold),
             ),
             RaisedButton(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => SecondPage()),
+                );
+              },
               child: Text(
                 'Click to Change',
                 style: TextStyle(color: Colors.white),
