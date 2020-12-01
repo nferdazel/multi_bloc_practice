@@ -1,40 +1,56 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:multi_bloc/bloc/color_bloc.dart';
+import 'package:multi_bloc/bloc/counter_bloc.dart';
 import 'package:multi_bloc/ui/draft_page.dart';
 
 class SecondPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return DraftPage(
-      backgroundColor: Colors.pink,
-      body: Center(
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Text(
-              '0',
-              style: TextStyle(fontSize: 40, fontWeight: FontWeight.bold),
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                RaisedButton(
-                  onPressed: () {},
-                  color: Colors.pink,
-                  shape: CircleBorder(),
+    return BlocBuilder<ColorBloc, Color>(
+      builder: (context, color) => DraftPage(
+        backgroundColor: color,
+        body: Center(
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              BlocBuilder<CounterBloc, int>(
+                builder: (context, number) => Text(
+                  number.toString(),
+                  style: TextStyle(fontSize: 40, fontWeight: FontWeight.bold),
                 ),
-                RaisedButton(
-                  onPressed: () {},
-                  color: Colors.amber,
-                  shape: CircleBorder(),
-                ),
-                RaisedButton(
-                  onPressed: () {},
-                  color: Colors.purple,
-                  shape: CircleBorder(),
-                ),
-              ],
-            ),
-          ],
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  RaisedButton(
+                    onPressed: () {},
+                    color: Colors.pink,
+                    shape: (color == Colors.pink)
+                        ? CircleBorder(
+                            side: BorderSide(color: Colors.black, width: 3))
+                        : CircleBorder(),
+                  ),
+                  RaisedButton(
+                    onPressed: () {},
+                    color: Colors.amber,
+                    shape: (color == Colors.amber)
+                        ? CircleBorder(
+                            side: BorderSide(color: Colors.black, width: 3))
+                        : CircleBorder(),
+                  ),
+                  RaisedButton(
+                    onPressed: () {},
+                    color: Colors.purple,
+                    shape: (color == Colors.purple)
+                        ? CircleBorder(
+                            side: BorderSide(color: Colors.black, width: 3))
+                        : CircleBorder(),
+                  ),
+                ],
+              ),
+            ],
+          ),
         ),
       ),
     );
