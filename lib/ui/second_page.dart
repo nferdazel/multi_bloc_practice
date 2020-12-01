@@ -7,6 +7,9 @@ import 'package:multi_bloc/ui/draft_page.dart';
 class SecondPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    ColorBloc colorBloc = BlocProvider.of<ColorBloc>(context);
+    CounterBloc counterBloc = BlocProvider.of<CounterBloc>(context);
+
     return BlocBuilder<ColorBloc, Color>(
       builder: (context, color) => DraftPage(
         backgroundColor: color,
@@ -24,7 +27,9 @@ class SecondPage extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   RaisedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      colorBloc.add(ColorEvent.toPink);
+                    },
                     color: Colors.pink,
                     shape: (color == Colors.pink)
                         ? CircleBorder(
@@ -32,7 +37,9 @@ class SecondPage extends StatelessWidget {
                         : CircleBorder(),
                   ),
                   RaisedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      colorBloc.add(ColorEvent.toAmber);
+                    },
                     color: Colors.amber,
                     shape: (color == Colors.amber)
                         ? CircleBorder(
@@ -40,7 +47,9 @@ class SecondPage extends StatelessWidget {
                         : CircleBorder(),
                   ),
                   RaisedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      colorBloc.add(ColorEvent.toPurple);
+                    },
                     color: Colors.purple,
                     shape: (color == Colors.purple)
                         ? CircleBorder(
