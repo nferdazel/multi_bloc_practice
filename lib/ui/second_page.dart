@@ -7,7 +7,9 @@ import 'package:multi_bloc/ui/draft_page.dart';
 class SecondPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    // ignore: close_sinks
     ColorBloc colorBloc = BlocProvider.of<ColorBloc>(context);
+    // ignore: close_sinks
     CounterBloc counterBloc = BlocProvider.of<CounterBloc>(context);
 
     return BlocBuilder<ColorBloc, Color>(
@@ -18,9 +20,12 @@ class SecondPage extends StatelessWidget {
             mainAxisSize: MainAxisSize.min,
             children: [
               BlocBuilder<CounterBloc, int>(
-                builder: (context, number) => Text(
-                  number.toString(),
-                  style: TextStyle(fontSize: 40, fontWeight: FontWeight.bold),
+                builder: (context, number) => GestureDetector(
+                  onTap: () => counterBloc.add(number + 1),
+                  child: Text(
+                    number.toString(),
+                    style: TextStyle(fontSize: 40, fontWeight: FontWeight.bold),
+                  ),
                 ),
               ),
               Row(
